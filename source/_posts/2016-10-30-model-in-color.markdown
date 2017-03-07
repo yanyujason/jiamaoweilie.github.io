@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "[彩色建模【译】](http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html)"
+title: "彩色建模【译】"
 date: 2016-10-30 11:49:46 +0800
 comments: true
 categories:
 ---
+
+[参见原文](http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html)
 
 使用面向对象语言的（如Java，C#, Objective-C）软件开发人员创建一系列相关的类来开发软件。每个类定义了不同类型的对象，各个对象之间相互合作，提供了软件所需的功能。
 
@@ -131,7 +133,7 @@ DNC在审查现有模型中也非常有用。首先，通过分配原型到每�
 与[《Java Modeling in Color with UML》](http://www.step-10.com/Books/JMCUBook.html)书中提到的相比，近些年，我又补充了关于DNC的小改动，[阅读更多关于这些修改...](http://www.step-10.com/SoftwareDesign/ModellingInColour/DNCChanges.html)
 
 **彩色建模法**
-	
+
 尽管在没有颜色的情况下类和模型原型也可以很有效，但是颜色编码为该技术命名。实践中证明，颜色编码是非常有效的，它可以有效减少我们使用它需要付出的代价。
 
 色彩使得类原型更加易学易记。它还使得类原型在非平凡（non-trivial）UML类和序列图中更容易识别。当你初次或者比较少接触对象建模，如果呈现出一个复杂的图表会特别难以理解，而色彩将使得这些图表变得易于理解。它使得诸如项目消费者和终端用户可以更好的在建模过程中做出贡献。例如，他们可以很快识别和集中精力在粉红色的MI类所代表的他们感兴趣的业务交互中，并由此展开工作。

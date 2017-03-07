@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://jiamaoweilie.github.io/atom.xml" rel="self"/>
   <link href="http://jiamaoweilie.github.io/"/>
-  <updated>2017-03-07T22:31:52+08:00</updated>
+  <updated>2017-03-07T22:34:29+08:00</updated>
   <id>http://jiamaoweilie.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -14,11 +14,13 @@
 
   
   <entry>
-    <title type="html"><![CDATA[[彩色建模【译】](http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html)]]></title>
+    <title type="html"><![CDATA[彩色建模【译】]]></title>
     <link href="http://jiamaoweilie.github.io/blog/2016/10/30/model-in-color/"/>
     <updated>2016-10-30T11:49:46+08:00</updated>
     <id>http://jiamaoweilie.github.io/blog/2016/10/30/model-in-color</id>
-    <content type="html"><![CDATA[<p>使用面向对象语言的（如Java，C#, Objective-C）软件开发人员创建一系列相关的类来开发软件。每个类定义了不同类型的对象，各个对象之间相互合作，提供了软件所需的功能。</p>
+    <content type="html"><![CDATA[<p><a href="http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html">参见原文</a></p>
+
+<p>使用面向对象语言的（如Java，C#, Objective-C）软件开发人员创建一系列相关的类来开发软件。每个类定义了不同类型的对象，各个对象之间相互合作，提供了软件所需的功能。</p>
 
 <p>根据“单一职责原则”或者“关注点分离”原则，精心设计的类的对象做且只做一件事件。一些类体现了技术领域的概念，例如用户界面、页面、控件、数据库连接、搜索结果、事务、网络连接、服务、消息。另一些类体现了问题域（problem domain）的概念。问题域的关注点是软件的消费者或用户。例如，如果开发一个订单管理系统，我们将定义一些问题域的类来代表消费者、订单和产品。</p>
 

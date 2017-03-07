@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: angularjs | My Octopress Blog]]></title>
+  <title><![CDATA[Category: Angularjs | My Octopress Blog]]></title>
   <link href="http://jiamaoweilie.github.io/blog/categories/angularjs/atom.xml" rel="self"/>
   <link href="http://jiamaoweilie.github.io/"/>
-  <updated>2017-03-07T22:06:33+08:00</updated>
+  <updated>2017-03-07T22:31:52+08:00</updated>
   <id>http://jiamaoweilie.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>

@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://jiamaoweilie.github.io/atom.xml" rel="self"/>
   <link href="http://jiamaoweilie.github.io/"/>
-  <updated>2017-03-07T22:06:33+08:00</updated>
+  <updated>2017-03-07T22:31:52+08:00</updated>
   <id>http://jiamaoweilie.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -2640,7 +2640,7 @@ Hello world!
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Bulid a Todo List Example  with Spring Boot]]></title>
+    <title type="html"><![CDATA[Bulid a Todo List Example With Spring Boot]]></title>
     <link href="http://jiamaoweilie.github.io/blog/2014/08/10/bulid-a-todo-list-example-with-spring-boot/"/>
     <updated>2014-08-10T17:00:16+08:00</updated>
     <id>http://jiamaoweilie.github.io/blog/2014/08/10/bulid-a-todo-list-example-with-spring-boot</id>

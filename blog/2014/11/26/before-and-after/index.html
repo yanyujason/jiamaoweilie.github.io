@@ -1,0 +1,433 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>伪元素的使用 - My Octopress Blog</title>
+	<meta name="author" content="Your Name">
+
+	
+	<meta name="description" content="之前在学习CSS VOCABULARY的时候看到过有关伪元素的知识，知道它可以方便开发，但是具体用途和用法并没有真正掌握。最近有机会再次接触，对其用途有了一些新认识。 完美的画个衬线 在写页面的时候经常会遇到下图所示的情况，需要在一个标题或一段文字的下方显示一条定长的衬线。 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">文章</a></li>
+	<li><a href="/blog/archives">归档</a></li>
+	<li><a href="/about">关于我</a></li> 
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">文章</a></li>
+	<li><a href="/blog/archives">归档</a></li>
+	<li><a href="/about">关于我</a></li> 
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:jiamaoweilie.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:jiamaoweilie.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">伪元素的使用</h2>
+	<div class="entry-content"><p>之前在学习CSS VOCABULARY的时候看到过有关伪元素的知识，知道它可以方便开发，但是具体用途和用法并没有真正掌握。最近有机会再次接触，对其用途有了一些新认识。</p>
+
+<h2>完美的画个衬线</h2>
+
+<p>在写页面的时候经常会遇到下图所示的情况，需要在一个标题或一段文字的下方显示一条定长的衬线。</p>
+
+<p><img src="/images/img_for_before_after/how-it-works.png" alt="" /></p>
+
+<p>我们可以通过给该元素的下面加另一个元素，然后设置一些样式来实现这种效果。但是如果使用伪元素就可以在不添加任何额外元素的情况下方便的画出这条衬线。</p>
+
+<p>假设，有这样一个标题需要设置上图所示的样式：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">h2</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="o">&gt;</span><span class="nt">HOW</span> <span class="nt">IT</span> <span class="nt">WORKS</span><span class="o">&lt;/</span><span class="nt">h2</span><span class="o">&gt;</span>  
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我们来看看如何使用伪元素来为该标题设置样式：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">h2</span><span class="p">{</span>
+</span><span class='line'>    <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">color</span><span class="o">:</span> <span class="err">$</span><span class="nb">gray</span><span class="o">-</span><span class="nb">black</span><span class="o">-</span><span class="k">color</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">&amp;::</span><span class="n">after</span> <span class="err">{</span>
+</span><span class='line'>    <span class="k">content</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">top</span><span class="o">:</span> <span class="m">35px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">left</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">50px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">height</span><span class="o">:</span> <span class="m">3px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">39</span><span class="o">,</span> <span class="m">39</span><span class="o">,</span> <span class="m">43</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">-23px</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="err">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看到，我们将元素本身的<code>position</code>设为<code>relative</code>，然后将其伪元素after的<code>positon</code>设为<code>absolute</code>，这样after的位置就相对于其父元素是绝对位置，我们可以通过设置它的<code>top</code>，<code>left</code>，或者<code>right</code>属性来调整它的位置。上面代码中设定该元素的<code>width</code>为<code>50px</code>,<code>height</code>为<code>30px</code>，并设置了<code>background-color</code>，这样它的样子就是一条长<code>50px</code>，高<code>3px</code>的线。我们再让其<code>left</code>等于<code>50%</code>，<code>top</code>等于<code>35px</code>，它就会位于其父元素上边框下方35px处，并居中。至此，我们就实现了上图所示的衬线效果。</p>
+
+<h2>让这些圈圈优雅的连起来</h2>
+
+<p>下面这张图也是页面上的一个常见情况，一些元素从中间被一条线连起来，像糖葫芦一样这条线在图片的中间。</p>
+
+<p><img src="/images/img_for_before_after/numbers.png" alt="" /></p>
+
+<p>同样，我们可以使用伪元素实现这条线。假设有下面一段代码需要实现上图的样式：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">ul</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">h2</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;number first&quot;</span><span class="o">&gt;</span><span class="nt">1</span><span class="o">&lt;/</span><span class="nt">h2</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;description&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="nt">i</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;fa fa-list-alt fa-7x&quot;</span><span class="o">&gt;&lt;/</span><span class="nt">i</span><span class="o">&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="nt">h2</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;descSummary&quot;</span><span class="o">&gt;</span><span class="nt">Compare</span><span class="o">&lt;/</span><span class="nt">h2</span><span class="o">&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">Magni</span> <span class="nt">dolores</span> <span class="nt">eoos</span> <span class="nt">qui</span> <span class="nt">retione</span> <span class="nt">voluptatem</span> <span class="nt">sequi</span> <span class="nt">nesciunt</span> <span class="nt">neque</span> <span class="nt">porro</span> <span class="nt">quisquam</span> <span class="nt">est</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="nt">h2</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="o">&gt;</span><span class="nt">2</span><span class="o">&lt;/</span><span class="nt">h2</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;description&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="nt">i</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;fa fa-pencil fa-7x&quot;</span><span class="o">&gt;&lt;/</span><span class="nt">i</span><span class="o">&gt;</span>
+</span><span class='line'>              <span class="o">&lt;</span><span class="nt">h2</span><span class="o">&gt;</span><span class="nt">Receive</span> <span class="nt">Proposals</span><span class="o">&lt;/</span><span class="nt">h2</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">Magni</span> <span class="nt">dolores</span> <span class="nt">eoos</span> <span class="nt">qui</span> <span class="nt">retione</span> <span class="nt">voluptatem</span> <span class="nt">sequi</span> <span class="nt">nesciunt</span> <span class="nt">neque</span> <span class="nt">porro</span> <span class="nt">quisquam</span> <span class="nt">est</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">h2</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="o">&gt;</span><span class="nt">3</span><span class="o">&lt;/</span><span class="nt">h2</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;description&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="nt">i</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;fa fa-users fa-7x&quot;</span><span class="o">&gt;&lt;/</span><span class="nt">i</span><span class="o">&gt;</span>
+</span><span class='line'>              <span class="o">&lt;</span><span class="nt">h2</span><span class="o">&gt;</span><span class="nt">Sell</span> <span class="nt">with</span> <span class="nt">the</span> <span class="nt">Best</span><span class="o">&lt;/</span><span class="nt">h2</span><span class="o">&gt;</span>
+</span><span class='line'>              <span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">Magni</span> <span class="nt">dolores</span> <span class="nt">eoos</span> <span class="nt">qui</span> <span class="nt">retione</span> <span class="nt">voluptatem</span> <span class="nt">sequi</span> <span class="nt">nesciunt</span> <span class="nt">neque</span> <span class="nt">porro</span> <span class="nt">quisquam</span> <span class="nt">est</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>          <span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">ul</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我们只关注于数字和其衬线部分的样式：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">33.33%</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">number</span> <span class="err">{</span>
+</span><span class='line'>    <span class="k">border</span><span class="o">:</span> <span class="m">2px</span> <span class="err">$</span><span class="k">border-color</span> <span class="k">solid</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">height</span><span class="o">:</span> <span class="m">60px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">60px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">line-height</span><span class="o">:</span> <span class="m">60px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">color</span><span class="o">:</span> <span class="err">$</span><span class="nb">gray</span><span class="o">-</span><span class="k">color</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">background-color</span><span class="o">:</span> <span class="err">$</span><span class="k">background-color</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nc">.number</span><span class="o">:</span><span class="nd">:before</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">content</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">top</span><span class="o">:</span> <span class="m">30px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">right</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">height</span><span class="o">:</span> <span class="m">2px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">background</span><span class="o">:</span> <span class="err">$</span><span class="k">border-color</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">z-index</span><span class="o">:</span> <span class="m">-1</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nc">.first</span><span class="o">:</span><span class="nd">:before</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="err">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看到，每个<code>li</code>向左浮动，并且宽度为33.33%，这样这三个数字就可以平均分布在页面中的一行。然后为数字元素设置了宽和高都是<code>60px</code>，并让其<code>border-radius</code>为50%，设置边框之后，三个圆圈就实现了。我们设置数字元素的<code>position</code>为<code>relative</code>，其伪元素before的<code>position</code>为<code>absolute</code>，然后设置其<code>top</code>为圆圈半径，<code>right</code>为<code>50%</code>，<code>width</code>为<code>100%</code>，这样我们就成功的在这些圈圈中间画了一条线。但是这样下来，你会发现第一个元素不需要有这条线，而且线有可能跑到圈圈里面。别着急，我们可以让第一个数字的伪元素不显示，并给圆圈设置一个背景色来覆盖其里面多余的线。</p>
+
+<h2>立体的阴影也没有多麻烦</h2>
+
+<p>看到下面这几个图标，很多人想必跟我一样一头雾水，不知其然也不知其所以然。后来经过研究，虽不知其完美的实现方法，但是发现使用伪元素可以实现如图效果。</p>
+
+<p><img src="/images/img_for_before_after/cycle.png" alt="" /></p>
+
+<p>先来看看我的html代码：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">ul</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;like&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;icon-heart&quot;</span><span class="o">&gt;&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;trash&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;icon-trash&quot;</span><span class="o">&gt;&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;continue&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;icon-play&quot;</span><span class="o">&gt;&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>   
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;sync&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;icon-arrow-sync&quot;</span><span class="o">&gt;&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;fast-forward&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;icon-media-fast-forward&quot;</span><span class="o">&gt;&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">ul</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>假设这些<code>icon</code>是我的音乐播放器里面的link，我需要让它们变成上图所示的样子。这里的icon采取<a href="https://icomoon.io/">icomoon</a>里面的字体。</p>
+
+<p>其样式代码如下:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">ul</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">li</span> <span class="err">{</span>
+</span><span class='line'>    <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">10%</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">a</span> <span class="err">{</span>
+</span><span class='line'>      <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">line-height</span><span class="o">:</span> <span class="m">60px</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">font-size</span><span class="o">:</span> <span class="m">4em</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">width</span><span class="o">:</span> <span class="m">60px</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">height</span><span class="o">:</span> <span class="m">60px</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">color</span><span class="o">:</span> <span class="err">$</span> <span class="k">font</span><span class="o">-</span><span class="nb">gray</span><span class="o">-</span><span class="k">color</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">background-color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>      <span class="o">@</span><span class="n">include</span> <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="p">(</span><span class="n">rgba</span><span class="p">(</span><span class="nb">black</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">)</span><span class="m">0</span> <span class="m">0</span> <span class="m">20</span> <span class="k">px</span><span class="p">);</span>
+</span><span class='line'>      <span class="o">&amp;::</span><span class="n">after</span> <span class="err">{</span>
+</span><span class='line'>        <span class="k">z-index</span><span class="o">:</span> <span class="m">-100</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">content</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">width</span><span class="o">:</span> <span class="m">80px</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">height</span><span class="o">:</span> <span class="m">80px</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">right</span><span class="o">:</span> <span class="m">-10px</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">top</span><span class="o">:</span> <span class="m">-10px</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="err">$</span> <span class="k">font</span><span class="o">-</span><span class="nb">gray</span><span class="o">-</span><span class="k">color</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="err">}</span>
+</span><span class='line'>  <span class="err">}</span>
+</span><span class='line'><span class="err">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>通过代码可以看到，我们给<code>a</code>元素设置了一定的宽、高、边框、阴影，并通过<code>after</code>在其下面画一个比它本身的直径大<code>20px</code>的圆，这样二者重叠起来就是一个完美的有阴影的图标。</p>
+
+<p>当然，伪元素的用法远不止这些，我们以后再慢慢研究吧。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Nov 26th, 2014</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/css/'>css</a>
+
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2017
+
+    Your Name
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

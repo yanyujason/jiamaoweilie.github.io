@@ -1,0 +1,357 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>使用Flyway管理数据库 - My Octopress Blog</title>
+	<meta name="author" content="Your Name">
+
+	
+	<meta name="description" content="以前几乎没有自己好好弄过数据库相关的东西，除了照猫画虎的改过几个表结构，几乎还是一窍不通。今天在组里的workshop上需要从零开始搭建各种环境，跟着组里人学了学使用Flyway来管理数据库。据说它是一个很高大上的数据库管理工具，不过具体高大上在哪里我这只菜鸟还不是很清楚， &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">文章</a></li>
+	<li><a href="/blog/archives">归档</a></li>
+	<li><a href="/about">关于我</a></li> 
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">文章</a></li>
+	<li><a href="/blog/archives">归档</a></li>
+	<li><a href="/about">关于我</a></li> 
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:jiamaoweilie.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:jiamaoweilie.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">使用Flyway管理数据库</h2>
+	<div class="entry-content"><p>以前几乎没有自己好好弄过数据库相关的东西，除了照猫画虎的改过几个表结构，几乎还是一窍不通。今天在组里的workshop上需要从零开始搭建各种环境，跟着组里人学了学使用Flyway来管理数据库。据说它是一个很高大上的数据库管理工具，不过具体高大上在哪里我这只菜鸟还不是很清楚，先来梳理一下它在我们workshop中的用法吧。</p>
+
+<h2><strong>讨厌的配置</strong></h2>
+
+<p>首先当然是进行一堆乱七八糟的配置，是我最讨厌的东西，可是没有办法，必经之路。我们的工程使用maven作为构建工具，所以需要在pom.xml文件中加入flywaydb的插件：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;plugin&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;groupId&gt;</span>org.flywaydb<span class="nt">&lt;/groupId&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;artifactId&gt;</span>flyway-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;version&gt;</span>3.1<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;configuration&gt;</span>
+</span><span class='line'>        ....
+</span><span class='line'>    <span class="nt">&lt;/configuration&gt;</span>
+</span><span class='line'><span class="nt">&lt;/plugin&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这段代码描述了该插件的名字，版本号，以及一些flyway的配置。配置flyway的方式有很多种，我们可以像下面这样pom.xml里面配置：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;plugin&gt;</span>
+</span><span class='line'>    ...
+</span><span class='line'>    <span class="nt">&lt;configuration&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;user&gt;</span>myUser<span class="nt">&lt;/user&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;password&gt;</span>mySecretPwd<span class="nt">&lt;/password&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;schemas&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;schema&gt;</span>schema1<span class="nt">&lt;/schema&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;schema&gt;</span>schema2<span class="nt">&lt;/schema&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;schema&gt;</span>schema3<span class="nt">&lt;/schema&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/schemas&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;placeholders&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;keyABC&gt;</span>valueXYZ<span class="nt">&lt;/keyABC&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;otherplaceholder&gt;</span>value123<span class="nt">&lt;/otherplaceholder&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/placeholders&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/configuration&gt;</span>
+</span><span class='line'><span class="nt">&lt;/plugin&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>也可以通过一个外部的配置文件来配置：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>flyway.user=myUser
+</span><span class='line'>flyway.password=mySecretPwd
+</span><span class='line'>flyway.schemas=schema1,schema2,schema3
+</span><span class='line'>flyway.placeholders.keyABC=valueXYZ
+</span><span class='line'>flyway.placeholders.otherplaceholder=value123
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后执行mvn时通过指定参数<code>flyway.configFile</code>的值来指定配置文件：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>mvn -Dflyway.configFile=myConfig.properties
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>默认的<code>flyway.properties</code>文件和pom.xml在相同的路径下。</p>
+
+<p>另外还可以通过其他方式来指定flyway的配置参数，具体信息可以参加其与maven集成的<a href="http://flywaydb.org/documentation/maven/">相关文档</a>。</p>
+
+<p>我们的工程中使用外部配置文件的方式进行配置，目前的配置文件如下所示：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>flyway.user=wjia
+</span><span class='line'>flyway.password=
+</span><span class='line'>flyway.driver=org.postgresql.Driver
+</span><span class='line'>flyway.url=jdbc:postgresql://localhost:5432/wjia
+</span><span class='line'>flyway.locations=classpath:db/migration
+</span><span class='line'>flyway.sqlMigrationPrefix=V
+</span><span class='line'>flyway.sqlMigrationSeparator=__
+</span><span class='line'>flyway.sqlMigrationSuffix&gt;=.sql
+</span><span class='line'>flyway.encoding=ISO-8859-1
+</span><span class='line'>#flyway.baselineVersion=2
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看出，文件中指定了user，password，driver，url等用来连接数据库的信息。其中<code>flyway.locations</code>指定了sql文件的位置，<code>flyway.sqlMigrationPrefix</code>,
+<code>flyway.sqlMigrationSeparator</code>,<code>flyway.sqlMigrationSuffix</code>共同指定了sql文件的命名方式，我们指定的命名方式是以V开头，__作为间隔符，.sql结尾。flyway有一些默认的命名的命名方式，如果不符合规定会造成操作的失败。</p>
+
+<h2><strong>建sql吧</strong></h2>
+
+<p>讨厌的配置完成之后，当然是开始建立数据库迁移任务了，依照上面配置文件中指定的文件路径和命名规则，我们在classpath（resources目录）下的db.migration目录中定义sql文件。例如，我们可以简单的建立一张数据表，然后在表中添加几条记录。</p>
+
+<p>这样resources里面的工程目录就是这样的：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>└──resources
+</span><span class='line'>  └──db.migration
+</span><span class='line'>      └──V1__Create_guest_table.sql
+</span><span class='line'>      └──V2__Add_guest.sql
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在classpath下的db.migration目录下有两个简单的sql文件。文件内容分别如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>create table Guest (
+</span><span class='line'>  id integer constraint pk PRIMARY KEY,
+</span><span class='line'>  name varchar(40) not null,
+</span><span class='line'>  signingDate date
+</span><span class='line'>);
+</span><span class='line'>create SEQUENCE guest_id_generator START 10000;
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>insert into Guest (ID, NAME,signingDate) values (1, &#39;Axel&#39;, &#39;2015-1-19&#39;);
+</span><span class='line'>insert into Guest (ID, NAME,signingDate) values (2, &#39;Mr. Foo&#39;,&#39;2015-1-19&#39;);
+</span><span class='line'>insert into Guest (ID, NAME,signingDate) values (3, &#39;Ms. Bar&#39;,&#39;2015-1-19&#39;);
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>至此我们就有了flyway的配置文件和数据库迁移任务文件，下面就到了flyway发挥作用的时候，看它如何帮助我们来管理数据库吧。</p>
+
+<h2><strong>看flyway如何管理数据库</strong></h2>
+
+<h4><strong>Migrate</strong></h4>
+
+<p>flyway的最重要的功能当然是完成数据库迁移了，使用<code>mvn flyway:migrate</code>命令就可以方便的帮助我们执行<code>flyway.locations</code>目录中定义的migration任务。由于我们的使用了外部的flyway配置文件，因此在执行migration任务时需要加上参数<code>flyway.properties</code>来指定配置文件的位置。所以，在我们的工程中需要执行的任务为：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>mvn flyway:migrate -Dflyway.configFile=localPath/flyway.properties
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+其中<code>localPath/</code>为<code>flyway.properties</code>文件在本地的路径。执行完该任务后,就生成了我们需要的guest表，并生成了三条数据。查询数据库，可以得到以下表结构和数据：</p>
+
+<p><img src="/images/img_for_flyway/table.jpg" alt="" /></p>
+
+<h4><strong>Clean</strong></h4>
+
+<p>如果我们想初始化数据库，删除所有的表和数据，那么只需要执行命令：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>mvn flyway:clean
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4><strong>Info</strong></h4>
+
+<p>如果我们想知道所有migration的详细信息，可以通过执行下面命令来打印信息：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>mvn flyway:info
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>执行之后，Terminal中会打印出所有migration的详细信息，其中包括版本号，描述，执行时间，以及状态，具体信息如下图所示：</p>
+
+<p><img src="/images/img_for_flyway/info.jpg" alt="" /></p>
+
+<h4><strong>更多命令</strong></h4>
+
+<p>flyway还提供了更多命令来帮助我们管理数据库。例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>mvn flyway:validate
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>用来validate已经执行的migration任务。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>mvn flyway:baseline
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>用来回滚数据库到一个配置文件中设定好的baseline。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>mvn flyway:repair
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>用来删除执行失败的migration任务。</p>
+
+<p>更多关于flyway的详细用法，请参见其<a href="http://flywaydb.org/documentation/">官方文档</a>。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jan 22nd, 2015</div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2017
+
+    Your Name
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

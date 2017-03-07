@@ -1,0 +1,974 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS VOCABULARY - My Octopress Blog</title>
+	<meta name="author" content="Your Name">
+
+	
+	<meta name="description" content="CSS词汇是前端开发经常需要用到的东西，但是各种各样的CSS词汇经常令人眼花缭乱。本文主要总结一些CSS词汇的主要功能和用法。 @import 它是一种引入CSS的方式，可以在一个CSS文件中引入另一个CSS文件，使用方法如下： 1
+@import url(my.css); Media &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">文章</a></li>
+	<li><a href="/blog/archives">归档</a></li>
+	<li><a href="/about">关于我</a></li> 
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">文章</a></li>
+	<li><a href="/blog/archives">归档</a></li>
+	<li><a href="/about">关于我</a></li> 
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:jiamaoweilie.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:jiamaoweilie.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">CSS VOCABULARY</h2>
+	<div class="entry-content"><p>CSS词汇是前端开发经常需要用到的东西，但是各种各样的CSS词汇经常令人眼花缭乱。本文主要总结一些CSS词汇的主要功能和用法。</p>
+
+<h2><strong>@import</strong></h2>
+
+<p>它是一种引入CSS的方式，可以在一个CSS文件中引入另一个CSS文件，使用方法如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">my</span><span class="nc">.css</span><span class="o">)</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2><strong>Media Queries</strong></h2>
+
+<p>根据字面意思，“Media Queries”就是媒体查询。在CSS中，我们可以设置不同类型的媒体条件，并根据相应的条件，为符合条件的媒体调用与之对应的样式表。它主要用于响应式网页设计（Responsive web Design），该设计可使网站在多种浏览设备上完美显示。</p>
+
+<p>Media Queries的简单用法如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@media</span> <span class="nt">only</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">700px</span><span class="o">)</span><span class="p">{</span>
+</span><span class='line'>  <span class="nf">#content</span><span class="p">{</span>
+</span><span class='line'>      <span class="k">width</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上media语句表示，当屏幕的最大宽度小于700px时，#content的宽度就变为原来的50%。这个例子包含了几种概念：</p>
+
+<ul>
+<li>媒体类型（Media Type）</li>
+</ul>
+
+
+<p>通过媒体类型可以对不同的设备指定不同的样式，如上例中的screen。<a href="http://www.w3.org/TR/CSS2/media.html#media-types">常见的媒体类型</a>有数十种。</p>
+
+<ul>
+<li>媒体特性（Media Features）</li>
+</ul>
+
+
+<p>媒体特性就是媒体类型的特性，如上例中的mix-width，是指屏幕的最大宽度。<a href="http://www.w3.org/TR/css3-mediaqueries/#media1">常见的媒体特性</a>有十三种。</p>
+
+<ul>
+<li>关键词（Key Word）</li>
+</ul>
+
+
+<p>关键词有三种：and， not， only。</p>
+
+<p>and用于定义“与”条件，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@media</span> <span class="nt">screen</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:600px</span><span class="o">)</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:900px</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>是指屏幕的最小宽度大于600px并且最大宽度小于900px。</p>
+
+<p>not用于排除某种特定的媒体类型，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@media</span> <span class="nt">not</span> <span class="nt">print</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">1200px</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>是指排除print这种媒体类型。</p>
+
+<p>only用来指定某种特定的媒体类型，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@media</span> <span class="nt">only</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-device-width</span><span class="nd">:240px</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>用来特指screen这种媒体类型。</p>
+
+<h2><strong>CSS选择器</strong></h2>
+
+<p>CSS选择器是CSS中最常用的东西，我们都不会感到陌生。但是它还有一些高端、神奇、不为常人所知的功能，下文将一一介绍。常用的CSS选择器有三种：</p>
+
+<ul>
+<li>简单选择器（Simple Selector）</li>
+<li>属性选择器（Attribute Selector）</li>
+<li>伪类选择器（Pseudo-class Selector）</li>
+</ul>
+
+
+<h3><strong>一. 简单选择器</strong></h3>
+
+<p>简单选择器是CSS世界使用最为广泛的选择器，我将通过一个实例来总结它的用法。实例的代码如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;demo&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">ul</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">id</span><span class="o">=</span><span class="s2">&quot;first&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">&gt;</span><span class="nt">1</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;active important&quot;</span><span class="o">&gt;</span><span class="nt">2</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;important items&quot;</span><span class="o">&gt;</span><span class="nt">3</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;important&quot;</span><span class="o">&gt;</span><span class="nt">4</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;items&quot;</span><span class="o">&gt;</span><span class="nt">5</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">6</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">7</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">8</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">9</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">id</span><span class="o">=</span><span class="s2">&quot;last&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="o">&gt;</span><span class="nt">10</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;/</span><span class="nt">ul</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在添加一些样式之后，实例的初步现实如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-status.png" alt="" /></p>
+
+<h4>1. 通配符选择器（Universal Selector）（*）</h4>
+
+<p>通配符选择器用来选择所有元素，或者某个元素下的所有元素。例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">*</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">margin</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">padding</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示选择所有元素，并将其margin、padding都设置为0。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="o">*</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="nb">blue</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示选择了.demo下的所有所有元素。以上例子的效果图如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-tp.png" alt="" /></p>
+
+<p>从图中可以看出，div.demo下所有元素的边框都加上了上面代码中定义的样式。</p>
+
+<h4>2. 元素选择器（Element Selector）（E）</h4>
+
+<p>元素就是html页面中的元素，例如本文中的div，ul，li等。元素选择器用来选择这些页面元素。例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background-color</span><span class="o">:</span> <span class="n">grey</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">orange</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个例子选择html中的li元素，并将其背景色设为grey，前景色设为orange，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-e.png" alt="" /></p>
+
+<h4>3. 类选择器（Class Selector）（.className）</h4>
+
+<p>类选择器根据html文档中元素的类名来选择元素，也就是说元素必须有类名才能使用类选择器来选择。上文中的items，important等就是为相应元素添加的类，类选择器可以用来选择这些元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.important</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">yellow</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示选择类名为important的元素，并将其字体加粗、前景色设为yellow。值得注意的是，类选择器并不仅仅选择类名为important的元素，而是选择类名中包含important的元素，效果图如下：</p>
+
+<p><img src="/images/img_for_css_vocabulary/class.png" alt="" /></p>
+
+<h4>4. ID选择器（ID Selector）(#ID)</h4>
+
+<p>与类选择器类似，ID选择器根据html文档中元素的id来选择元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#first</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="nb">lime</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="m">#000</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nf">#last</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="m">#000</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">lime</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上例中，选择id为first的元素，将其背景色设为lime，前景色设为#000；选择id为last的元素，将其背景色设为#000，前景色设为lime，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css-select-id.png" alt="" /></p>
+
+<h4>5. 后代选择器（Descendant Selector）(E F)</h4>
+
+<p>后代选择器也叫包含选择器，它可以选择某元素的后代元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">li</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上例中，.demo是祖先元素，li是后代元素。该例子所表达的意思是，选择了.demo的所有后代li元素，不管li与.demo之间是子元素、孙元素或者更深的层级关系，li都会被选中。效果为：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-ef.png" alt="" /></p>
+
+<h4>6. 子选择器（Child Selector）(E>F)</h4>
+
+<p>与后代选择器不同，子元素指选择某元素的子元素。例如：E>F，其中E为父元素，F为子元素，该表达式表示选择E元素下的所有子元素F。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">ul</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="nb">green</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">yellow</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个例子表示，选择ul的所有子元素li，效果图如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-chirld.png" alt="" /></p>
+
+<p>如果将上例中的ul改为div则不能选中li元素，因为li不是div的子元素。</p>
+
+<h4>7. 相邻选择器（Adjacent Sibling Selector）(E+F)</h4>
+
+<p>相邻选择器可以选择紧接在另一个元素后的元素，而且他们具有相同的父元素。例如：E+F，E元素和F元素具有相同的父元素，且F元素在的后面。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">li</span> <span class="o">+</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="nb">green</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">yellow</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上例用来选择li之前有个li的元素，效果图如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css-selector-xl.png" alt="" /></p>
+
+<p>从图中可以看出，第一个li元素没有被选中，因为它的前面没有li元素。</p>
+
+<h4>8. 普通兄弟选择器（General Sibling Selector）(E~F)</h4>
+
+<p>普通兄弟选择器用来选择元素后面所有的兄弟元素，它们可以不相邻，但必须具有相同的父元素。例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.active</span> <span class="o">~</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="nb">green</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">yellow</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>用来选择.active元素后面的所有兄弟元素li，效果如下:</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-tongyong.png" alt="" /></p>
+
+<h4>9. 群组选择器（Group Selector）(selector1,selector2,&hellip;,selectorN)</h4>
+
+<p>群组选择器将具有相同样式的元素放在一起，中间以逗号隔开，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.first</span><span class="o">,</span> <span class="nc">.last</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="nb">green</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">yellow</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>用来为.first和.last元素添加一些相同的样式，效果如下:</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-group.png" alt="" /></p>
+
+<h3><strong>二. 属性选择器</strong></h3>
+
+<p>属性选择器用来对带有指定属性的html元素设置样式。同样，我将通过一个实例来总结属性选择器的用法，实例的代码如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;demo clearfix&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;http://www.xxx.com&quot;</span> <span class="nt">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links item first&quot;</span> <span class="nt">id</span><span class="o">=</span><span class="s2">&quot;first&quot;</span> <span class="nt">title</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">&gt;</span><span class="nt">1</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links active item&quot;</span> <span class="nt">title</span><span class="o">=</span><span class="s2">&quot;test website&quot;</span> <span class="nt">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="o">&gt;</span><span class="nt">2</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;sites/file/test.html&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links item&quot;</span> <span class="nt">title</span><span class="o">=</span><span class="s2">&quot;this is a link&quot;</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;zh-cn&quot;</span><span class="o">&gt;</span><span class="nt">3</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;sites/file/test.png&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links item&quot;</span> <span class="nt">target</span><span class="o">=</span><span class="s2">&quot;_balnk&quot;</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;zh-tw&quot;</span><span class="o">&gt;</span><span class="nt">4</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;sites/file/image.jpg&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links item&quot;</span> <span class="nt">title</span><span class="o">=</span><span class="s2">&quot;zh-cn&quot;</span><span class="o">&gt;</span><span class="nt">5</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;mailto:xxx@hotmail&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links item&quot;</span> <span class="nt">title</span><span class="o">=</span><span class="s2">&quot;website link&quot;</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;zh&quot;</span><span class="o">&gt;</span><span class="nt">6</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links item&quot;</span> <span class="nt">title</span><span class="o">=</span><span class="s2">&quot;open the website&quot;</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;cn&quot;</span><span class="o">&gt;</span><span class="nt">7</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links item&quot;</span> <span class="nt">title</span><span class="o">=</span><span class="s2">&quot;close the website&quot;</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;en-zh&quot;</span><span class="o">&gt;</span><span class="nt">8</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links item&quot;</span> <span class="nt">title</span><span class="o">=</span><span class="s2">&quot;http://www.sina.com&quot;</span><span class="o">&gt;</span><span class="nt">9</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;links item last&quot;</span> <span class="nt">id</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="o">&gt;</span><span class="nt">10</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在添加一些样式之后，实例的初步现实如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-status.png" alt="" /></p>
+
+<h4>1. E[attr]</h4>
+
+<p>E[attr]用来选择具有某种属性的元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="o">[</span><span class="nt">id</span><span class="o">]</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span><span class="nb">yellow</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">font-weight</span><span class="o">:</span><span class="k">bold</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，.demo下所有带id属性的a元素，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-attr.png" alt="" /></p>
+
+<h4>2. E[attr = &ldquo;value&rdquo;]</h4>
+
+<p>E[attr = &ldquo;value&rdquo;]用来选择具有某种属性，并且属性的值为“value”的元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="o">[</span><span class="nt">id</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">]</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span><span class="nb">yellow</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">font-weight</span><span class="o">:</span><span class="k">bold</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，.demo下带有id属性，并且id的值为“first”的元素，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-attr2.png" alt="" /></p>
+
+<h4>3. E[attr ~= &ldquo;value&rdquo;]</h4>
+
+<p>E[attr ~= &ldquo;value&rdquo;]根据属性值中的词列表来进行选择，选择属性值中具有“value”这个词的元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="o">[</span><span class="nt">title</span><span class="o">~=</span><span class="s2">&quot;website&quot;</span><span class="o">]</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span><span class="nb">orange</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，.demo下的a元素的title属性中，只有其属性值包含“website”这个词就会被选择，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-attr4.png" alt="" /></p>
+
+<h4>4. E[attr ^= &ldquo;value&rdquo;]</h4>
+
+<p>E[attr ^= &ldquo;value&rdquo;]选择attr属性值以“value”开头的所有元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&quot;http://&quot;</span><span class="o">]</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span><span class="nb">orange</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&quot;mailto:&quot;</span><span class="o">]</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span><span class="nb">green</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span><span class="nb">orange</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，选择.demo下具有href属性的a元素，并且href属性的值是以<code>http://</code>和<code>mailto:</code>开头，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-attr5.png" alt="" /></p>
+
+<h4>5. E[attr $= &ldquo;value&rdquo;]</h4>
+
+<p>与E[attr ^= &ldquo;value&rdquo;]相反，E[attr $= &ldquo;value&rdquo;]选择attr属性值以“value”结尾的元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">$=</span><span class="s2">&quot;png&quot;</span><span class="o">]</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span><span class="nb">orange</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，选择.demo下具有href属性的a元素，并且属性href的值以“png”结尾，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-attr6.png" alt="" /></p>
+
+<h4>6. E[attr *= &ldquo;value&rdquo;]</h4>
+
+<p>E[attr *= &ldquo;value&rdquo;]选择attr属性值包含子串“value”的所有元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="o">[</span><span class="nt">title</span><span class="o">*=</span><span class="s2">&quot;site&quot;</span><span class="o">]</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span><span class="nb">black</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span><span class="nb">white</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，选择.demo下具有title属性的a元素，并且title属性值包含子串“site”，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-attr7.png" alt="" /></p>
+
+<h4>7. E[attr |= &ldquo;value&rdquo;]</h4>
+
+<p>E[attr |= &ldquo;value&rdquo;]选择attr属性值等于“value”或以“value-”开头的所有元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="o">[</span><span class="nt">lang</span><span class="o">|=</span><span class="s2">&quot;zh&quot;</span><span class="o">]</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span><span class="nb">gray</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span><span class="nb">yellow</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，选择.demo下具有lang属性的a元素，并且属性lang的值为“zh”或以“zh-”开头，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-attr8.png" alt="" /></p>
+
+<h3><strong>三. 伪类选择器</strong></h3>
+
+<h4>动态伪类</h4>
+
+<p>动态伪类并不存在与html文档中，只有当用户和网站交互的时候它才能体现出来。动态伪类包含两种：锚点伪类（Anchor Pseudo-Classes）和用户行为伪类（User Action Pseudo-Class）。</p>
+
+<ul>
+<li><strong>锚点伪类</strong></li>
+</ul>
+
+
+<p>锚点伪类常用于链接的样式设置，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="nd">:link</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">gray</span><span class="p">;}</span>
+</span><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="nd">:visited</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">yellow</span><span class="p">;}</span>
+</span><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="nd">:hover</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;}</span>
+</span><span class='line'><span class="nc">.demo</span> <span class="nt">a</span><span class="nd">:active</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">blue</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，链接没有被访问时前景色为灰色，链接被访问过后前景色为黄色，鼠标悬浮在链接上时前景色为绿色，鼠标点中激活链接那一下前景色为蓝色。
+注意这四个锚点伪类的设置顺序，如果顺序不对会使我们设置的样式不生效。</p>
+
+<ul>
+<li><strong>用户行为伪类</strong></li>
+</ul>
+
+
+<p>用户行为伪类用于设置用户和页面交互时的一些样式设置，锚点伪类中的:hover和:active同时又是用户行为伪类。</p>
+
+<ul>
+<li>:hover，用于设置当用户把鼠标移动到元素上面时的效果；</li>
+<li>:active，用于设置用户点击元素时的效果（动作发生在点击的当时，松开鼠标此动作就会消失）；</li>
+<li>:focus，用户设置某元素成为焦点时的样式（例如选择一个输入框）。</li>
+</ul>
+
+
+<h4>UI状态伪类</h4>
+
+<p>常见的UI状态伪类有：</p>
+
+<ul>
+<li>:enabled</li>
+<li>:disabled</li>
+<li>:checked</li>
+</ul>
+
+
+<p>这些伪类主要针对html文档中的Form元素操作，最常见的有"type=&lsquo;text&rsquo;&ldquo;有enabled和disabled两种状态，前者表示可写，后者表示不可写。那么使用UI状态伪类就可以为同一个元素的不同状态设置不同的样式，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">]</span><span class="nd">:disabled</span> <span class="p">{</span><span class="k">border</span><span class="o">:</span><span class="m">1px</span> <span class="k">solid</span> <span class="m">#999</span><span class="p">;</span><span class="k">background-color</span><span class="o">:</span> <span class="m">#fefefe</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，为页面中禁用的文本框设置一个样式。</p>
+
+<h4>:nth选择器</h4>
+
+<p>:nth选择器是伪类选择器中最复杂的一个，我将通过一个实例总结其用法，实例的代码为：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;demo clearfix&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">ul</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;clearfix&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;first odd&quot;</span> <span class="nt">id</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">1</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;even&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">2</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;odd&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">3</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;even&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">4</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;odd&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">5</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;even&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">6</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;odd&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">7</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;even&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">8</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;odd&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">9</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;even last&quot;</span> <span class="nt">id</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="o">&gt;&lt;</span><span class="nt">a</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span><span class="nt">10</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;/</span><span class="nt">ul</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在添加一些样式之后，实例的初步现实如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-status.png" alt="" /></p>
+
+<h5>1. :first-child()</h5>
+
+<p>:first-child()用来选择某个元素的第一个元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">li</span><span class="nd">:first-child</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="nb">green</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">dotted</span> <span class="nb">blue</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，选择.demo的第一个li子元素，并为其加上一些样式，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-nth1.png" alt="" /></p>
+
+<h5>2. :last-child()</h5>
+
+<p>顾名思义，:last-child()用来选择某个元素的最后一个子元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">li</span><span class="nd">:last-child</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="nb">green</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">2px</span> <span class="k">dotted</span> <span class="nb">blue</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，选择.demo的最后一个li子元素，并为其加上一些样式，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-nth2.png" alt="" /></p>
+
+<h5>3. :nth-child()</h5>
+
+<p>:nth-child()可以选择一个元素的某个子元素，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">li</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">3</span><span class="o">)</span> <span class="p">{</span><span class="k">background</span><span class="o">:</span> <span class="nb">lime</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示.demo的第三个li子元素，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-nth3.png" alt="" /></p>
+
+<p>也可以选择某些子元素，有如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">li</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">n</span><span class="o">)</span> <span class="p">{</span><span class="k">background</span><span class="o">:</span> <span class="nb">lime</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，选择.demo下所有的子元素，这里的n是一个从0开始计数的变量，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-nth4.png" alt="" /></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">li</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">5</span><span class="o">)</span> <span class="p">{</span><span class="k">background</span><span class="o">:</span> <span class="nb">lime</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>因为n是从0开始计数的，所以以上代码会选择.demo的前5个li子元素。</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-nth8.png" alt="" /></p>
+
+<p>:nth-child()的用法还有很多，具体总结如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">length</span><span class="o">);</span><span class="c">/*参数是具体数字*/</span>
+</span><span class='line'><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">n</span><span class="o">);</span><span class="c">/*参数是n,n从0开始计算*/</span>
+</span><span class='line'><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">n</span><span class="o">*</span><span class="nt">length</span><span class="o">)</span><span class="c">/*n的倍数选择，n从0开始算*/</span>
+</span><span class='line'><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">n</span><span class="o">+</span><span class="nt">length</span><span class="o">);</span><span class="c">/*选择大于length后面的元素*/</span>
+</span><span class='line'><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">length</span><span class="o">)</span><span class="c">/*选择小于length前面的元素*/</span>
+</span><span class='line'><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">n</span><span class="o">*</span><span class="nt">length</span><span class="o">+</span><span class="nt">1</span><span class="o">);</span><span class="c">/*表示隔几选一*/</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>对于:nth-child()有个很好玩，也特别容易出错的例子：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">ul</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">a</span><span class="o">&gt;</span><span class="nt">link</span><span class="o">&lt;/</span><span class="nt">a</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">some</span> <span class="nt">text</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">apple</span> <span class="nt">1</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>  <span class="c">/*这一行会被选出*/</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">apple</span> <span class="nt">2</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">apple</span> <span class="nt">3</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">apple</span> <span class="nt">4</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">apple</span> <span class="nt">5</span><span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">ul</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>对于这段代码，使用CSS选择器：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">ul</span> <span class="nt">li</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">3</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>会选中apple 1那一行。这是因为nth-child()并不是从前面的选择符筛选后的结果中选择第n个。它的定义是，选择在其parent下的第n个子元素。而这个“第n个”的计算，是把它parent下所有的子元素都包括在内的。</p>
+
+<h5>4. :nth-last-child()</h5>
+
+<p>:nth-last-child()与:nth-child()相似，只是它是由最后一个开始元素开始计数的，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.demo</span> <span class="nt">li</span><span class="nd">:nth-last-child</span><span class="o">(</span><span class="nt">4</span><span class="o">)</span> <span class="p">{</span><span class="k">background</span><span class="o">:</span> <span class="nb">lime</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示，选择.demo下的倒数第四个li元素，效果如下：</p>
+
+<p><img src="http://www.w3cplus.com/sites/default/files/css3-selector-nth10.png" alt="" /></p>
+
+<h5>5. :empty</h5>
+
+<p>:empty用于设置当元素没有任何内容时的样式。例如，页面中有一个box是用来输出错误信息的，那么当没有错误信息时，我们就可以通过:empty使之不显示。</p>
+
+<h5>6. other nth selector</h5>
+
+<p>:nth选择器还有很多与:nth-child()相类似的其他用法，这里只将它们列举出来，不再一一赘述。</p>
+
+<ul>
+<li>:first-of-type</li>
+<li>:last-of-type</li>
+<li>:nth-of-type</li>
+<li>:nth-last-type</li>
+<li>:only-child</li>
+<li>:only-of-type</li>
+</ul>
+
+
+<h2><strong>伪元素</strong></h2>
+
+<p>所谓伪元素，可以理解为浏览器为某元素附加的元素。常用的伪元素有：</p>
+
+<ul>
+<li>::first-line</li>
+<li>::first-letter</li>
+<li>::before</li>
+<li>::after</li>
+</ul>
+
+
+<p>::first-line和::first-letter可以用于方便的为文本添加一些特殊的样式，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">The</span> <span class="nt">Coming</span> <span class="nt">of</span> <span class="nt">Wisdom</span> <span class="nt">with</span> <span class="nt">Time</span><span class="o">;</span> <span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;</span>
+</span><span class='line'>         <span class="nt">Though</span> <span class="nt">leaves</span> <span class="nt">are</span> <span class="nt">many</span><span class="o">,</span> <span class="nt">the</span> <span class="nt">root</span> <span class="nt">is</span> <span class="nt">one</span><span class="o">;</span> <span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;</span>
+</span><span class='line'>         <span class="nt">Through</span> <span class="nt">all</span> <span class="nt">the</span> <span class="nt">lying</span> <span class="nt">days</span> <span class="nt">of</span> <span class="nt">my</span> <span class="nt">youth</span><span class="o">;</span> <span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;</span>
+</span><span class='line'>         <span class="nt">I</span> <span class="nt">swayed</span> <span class="nt">my</span> <span class="nt">leaves</span> <span class="nt">and</span> <span class="nt">flowers</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">sun</span><span class="o">;</span> <span class="o">&lt;</span><span class="nt">br</span><span class="o">&gt;</span>
+</span><span class='line'>         <span class="nt">Now</span> <span class="nt">I</span> <span class="nt">may</span> <span class="nt">wither</span> <span class="nt">into</span> <span class="nt">the</span> <span class="nt">truth</span><span class="o">.</span>
+</span><span class='line'>      <span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以通过伪元素为其添加一些特殊样式：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">p</span><span class="o">:</span><span class="nd">:first-line</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-style</span><span class="o">:</span> <span class="k">italic</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">p</span><span class="o">:</span><span class="nd">:first-letter</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-size</span><span class="o">:</span> <span class="m">70px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">float</span><span class="o">:</span><span class="k">left</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">margin-right</span><span class="o">:</span><span class="m">3px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>效果为：</p>
+
+<p><img src="/images/img_for_css_vocabulary/firstline.png" alt="" /></p>
+
+<p>同理，::before和::after用于向元素的前面和后面添加一些特殊样式，它们需要与content属性一起使用：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.css-class</span><span class="nd">:before</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">content</span><span class="o">:</span> <span class="s2">&quot; &quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.css-class</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">content</span><span class="o">:</span> <span class="s2">&quot; &quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>通过伪元素，可以方便的实现一些使用其他方法需要花费很大力气的工作。可以通过<strong><a href="http://icodeit.org/2013/05/before-and-after-selector-in-css/">这里</a></strong>了解它的用法和一些实例.</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Aug 3rd, 2014</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/css/'>css</a>
+
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2017
+
+    Your Name
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

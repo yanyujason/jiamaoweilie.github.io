@@ -1,15 +1,13 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>使用AngularJS与api集成 - My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+	<meta charset="utf-8">
+	<title>使用AngularJS与api集成 - 三胖的窝</title>
+	<meta name="author" content="贾三胖">
 
-  
-  <meta name="description" content="如果我们有一个api提供一些json格式的数据，那么如何使用AngularJS来获取这些数据，又如何将处理过的的数据显示在一个具有responsive特性的页面上？本文将一一描述。 在本文的例子中api提供如下格式的json数组： 1
+	
+	<meta name="description" content="如果我们有一个api提供一些json格式的数据，那么如何使用AngularJS来获取这些数据，又如何将处理过的的数据显示在一个具有responsive特性的页面上？本文将一一描述。 在本文的例子中api提供如下格式的json数组： 1
 2
 3
 4
@@ -21,81 +19,78 @@
 10
 11
 [{" &hellip;">
-  
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://jiamaoweilie.github.io/blog/2014/09/02/angularjs">
-  <link href="/favicon.ico" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
+	<link href="/atom.xml" rel="alternate" title="三胖的窝" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
-  
-    <h2>A blogging framework for hackers.</h2>
-  
-</hgroup>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">三胖的窝</a></h1>
+<nav id="main-nav"><ul class="main">
+ <li><a href="/">文章</a></li>
+ <li><a href="/blog/archives">归档</a></li>
+ <li><a href="/about">关于我</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+ <li><a href="/">文章</a></li>
+ <li><a href="/blog/archives">归档</a></li>
+ <li><a href="/about">关于我</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:jiamaoweilie.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+		<a class="github" href="https://github.com/jiamaoweilie" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:jiamaoweilie.github.io">
+	</form>
+</nav>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:jiamaoweilie.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">使用AngularJS与api集成</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-02T21:53:45+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:53 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>如果我们有一个api提供一些json格式的数据，那么如何使用AngularJS来获取这些数据，又如何将处理过的的数据显示在一个具有responsive特性的页面上？本文将一一描述。</p>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">使用AngularJS与api集成</h2>
+	<div class="entry-content"><p>如果我们有一个api提供一些json格式的数据，那么如何使用AngularJS来获取这些数据，又如何将处理过的的数据显示在一个具有responsive特性的页面上？本文将一一描述。</p>
 
 <p>在本文的例子中api提供如下格式的json数组：</p>
 
@@ -317,115 +312,73 @@
 </div>
 
 
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
-
-      
+<div class="meta">
+	<div class="date">
 
 
 
 
-<time class='entry-date' datetime='2014-09-02T21:53:45+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:53 pm</span></time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/angularjs/'>angularjs</a>, <a class='category' href='/blog/categories/bootstrap/'>bootstrap</a>
-  
-</span>
+Sep 2nd, 2014</div>
+	<div class="tags">
 
 
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://jiamaoweilie.github.io/blog/2014/09/02/angularjs/" data-via="" data-counturl="http://jiamaoweilie.github.io/blog/2014/09/02/angularjs/" >Tweet</a>
-  
-  
-  
+	<a class='category' href='/blog/categories/angularjs/'>angularjs</a>, <a class='category' href='/blog/categories/bootstrap/'>bootstrap</a>
+
+
 </div>
-
-    
-    <br />
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/08/10/bulid-a-todo-list-example-with-spring-boot/" title="Previous Post: Bulid a Todo List Example  with Spring Boot">&laquo; Bulid a Todo List Example  with Spring Boot</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2014/09/09/guava-optional/" title="Next Post: Guava Optional">Guava Optional &raquo;</a>
-      
-    </p>
-  </footer>
+	
+	<div class="comments"><a href="#disqus_thread">Comments</a></div>
+	
+</div>
 </article>
 
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		
+		
+	</div>
+	
 </div>
 
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2016/10/30/model-in-color/">彩色建模【译】</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/10/07/chi-xu-ji-cheng-zhi-wo-jian-si/">持续集成之我见（四）</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/09/29/chi-xu-ji-cheng-san/">持续集成之我见（三）</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/09/28/chi-xu-ji-cheng-er/">持续集成之我见（二）</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/09/27/chi-xu-ji-cheng/">持续集成之我见（一）</a>
-      </li>
-    
-  </ul>
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
 </section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2017
 
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2017 - Your Name -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
+    贾三胖
 
 </footer>
-  
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
 
 
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
+<script type="text/javascript">
+      var disqus_shortname = 'jiamaoweilie';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://jiamaoweilie.github.io/blog/2014/09/02/angularjs/';
+        var disqus_url = 'http://jiamaoweilie.github.io/blog/2014/09/02/angularjs/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//go.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

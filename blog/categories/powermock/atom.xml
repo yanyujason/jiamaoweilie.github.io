@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Powermock | My Octopress Blog]]></title>
+  <title><![CDATA[Category: powermock | 三胖的窝]]></title>
   <link href="http://jiamaoweilie.github.io/blog/categories/powermock/atom.xml" rel="self"/>
   <link href="http://jiamaoweilie.github.io/"/>
-  <updated>2017-03-07T22:34:29+08:00</updated>
+  <updated>2017-03-09T15:52:36+08:00</updated>
   <id>http://jiamaoweilie.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[贾三胖]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
